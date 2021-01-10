@@ -76,7 +76,7 @@ def runapi(apilist,a):
                 print('第'+str(apilist[a])+"号api调用成功")
                 if config_list['是否开启各api延时'] != 'N':
                     apiRandTime = random.randint(config_list['api延时范围开始'],config_list['api延时结束'])
-                    print('API延時'+apiRandTime+'秒')
+                    print('API延時 '+apiRandTime+' 秒')
                     time.sleep(apiRandTime)
         except:
             print("pass")
@@ -109,7 +109,7 @@ print('共'+str(config_list['每次轮数'])+'轮')
 for c in range(1,config_list['每次轮数']+1):
     if config_list['是否启动随机时间'] == 'Y':
         randTime = random.randint(config_list['延时范围起始'],config_list['结束'])
-        print('随机延时'+randTime+'秒')
+        print('随机延时 '+randTime+' 秒')
         time.sleep(randTime)		
     for a in range(1, int(app_num)+1):
         if config_list['是否开启各账号延时'] == 'Y':
@@ -117,7 +117,7 @@ for c in range(1,config_list['每次轮数']+1):
         if a==1:
             client_id=os.getenv('CLIENT_ID')
             client_secret=os.getenv('CLIENT_SECRET')
-            print('\n'+'应用/账号 '+str(a)+' 的第'+str(c)+'轮'+time.asctime(time.localtime(time.time()))+'\n')
+            print('\n'+'应用/账号 '+str(a)+' 的第 '+str(c)+' 轮 '+time.asctime(time.localtime(time.time()))+'\n')
             if config_list['是否开启随机api顺序'] == 'Y':
                 print("已开启随机顺序, 共12个api, 自己数")
                 apilist=final_list
@@ -129,7 +129,7 @@ for c in range(1,config_list['每次轮数']+1):
         else:
             client_id=os.getenv('CLIENT_ID_'+str(a))
             client_secret=os.getenv('CLIENT_SECRET_'+str(a))
-            print('\n'+'应用/账号 '+str(a)+' 的第'+str(c)+'轮'+time.asctime(time.localtime(time.time()))+'\n')
+            print('\n'+'应用/账号 '+str(a)+' 的第 '+str(c)+' 轮 '+time.asctime(time.localtime(time.time()))+'\n')
             if config_list['是否开启随机api顺序'] == 'Y':
                 print("已开启随机顺序, 共12个api, 自己数")
                 apilist=final_list
