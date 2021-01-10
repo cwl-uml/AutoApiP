@@ -8,7 +8,7 @@ if app_num == '':
     app_num = '1'
 access_token_list=['wangziyingwen']*int(app_num)
 #配置选项，自由选择
-randNum = random.randint(3,10)
+randNum = random.randint(3,6)
 config_list = {'每次轮数':randNum,
             '是否启动随机时间':'Y','延时范围起始':60,'结束':300,
             '是否开启随机api顺序':'Y',
@@ -75,7 +75,9 @@ def runapi(apilist,a):
             if req.get(api_list[apilist[a]],headers=headers).status_code == 200:
                 print('第'+str(apilist[a])+"号api调用成功")
                 if config_list['是否开启各api延时'] != 'N':
-                    time.sleep(random.randint(config_list['api延时范围开始'],config_list['api延时结束']))
+                    api_rand_time=config_list['api延时范围开始'],config_list['api延时结束'])
+                    print('api延时'+str(api_rand_time)+' 秒')
+                    time.sleep(api_rand_time)
         except:
             print("pass")
             pass
@@ -107,6 +109,7 @@ print('共'+str(config_list['每次轮数'])+'轮')
 for c in range(1,config_list['每次轮数']+1):
     if config_list['是否启动随机时间'] == 'Y':
         rand_time=random.randint(config_list['延时范围起始'],config_list['结束'])
+        print('\n'+'開始時間'+time.asctime(time.localtime(time.time()))+'\n')
         print('随机延时 '+str(rand_time)+' 秒')
         time.sleep(rand_time)		
     for a in range(1, int(app_num)+1):
