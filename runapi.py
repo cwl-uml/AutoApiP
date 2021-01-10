@@ -75,7 +75,7 @@ def runapi(apilist,a):
             if req.get(api_list[apilist[a]],headers=headers).status_code == 200:
                 print('第'+str(apilist[a])+"号api调用成功")
                 if config_list['是否开启各api延时'] != 'N':
-                    api_rand_time=config_list['api延时范围开始'],config_list['api延时结束'])
+                    api_rand_time=random.randint(config_list['api延时范围开始'],config_list['api延时结束'])
                     print('api延时'+str(api_rand_time)+' 秒')
                     time.sleep(api_rand_time)
         except:
