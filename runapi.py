@@ -75,9 +75,7 @@ def runapi(apilist,a):
             if req.get(api_list[apilist[a]],headers=headers).status_code == 200:
                 print('第'+str(apilist[a])+"号api调用成功")
                 if config_list['是否开启各api延时'] != 'N':
-                    apiRandTime = random.randint(config_list['api延时范围开始'],config_list['api延时结束'])
-                    print('API延時 '+apiRandTime+' 秒')
-                    time.sleep(apiRandTime)
+                    time.sleep(random.randint(config_list['api延时范围开始'],config_list['api延时结束']))
         except:
             print("pass")
             pass
@@ -108,9 +106,7 @@ final_list=fixed_api
 print('共'+str(config_list['每次轮数'])+'轮')    
 for c in range(1,config_list['每次轮数']+1):
     if config_list['是否启动随机时间'] == 'Y':
-        randTime = random.randint(config_list['延时范围起始'],config_list['结束'])
-        print('随机延时 '+randTime+' 秒')
-        time.sleep(randTime)		
+        time.sleep(random.randint(config_list['延时范围起始'],config_list['结束']))		
     for a in range(1, int(app_num)+1):
         if config_list['是否开启各账号延时'] == 'Y':
             time.sleep(random.randint(config_list['账号延时范围开始'],config_list['账号延时结束']))
