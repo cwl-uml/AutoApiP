@@ -107,7 +107,7 @@ print('共'+str(config_list['每次轮数'])+'轮')
 for c in range(1,config_list['每次轮数']+1):
     if config_list['是否启动随机时间'] == 'Y':
         rand_time=random.randint(config_list['延时范围起始'],config_list['结束'])
-        print('随机延时 '+rand_time+' 秒')
+        print('随机延时 '+str(rand_time)+' 秒')
         time.sleep(rand_time)		
     for a in range(1, int(app_num)+1):
         if config_list['是否开启各账号延时'] == 'Y':
