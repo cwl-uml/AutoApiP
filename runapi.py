@@ -8,7 +8,7 @@ if app_num == '':
     app_num = '1'
 access_token_list=['wangziyingwen']*int(app_num)
 #配置选项，自由选择
-randNum = random.randint(1,5)
+randNum = random.randint(3,10)
 config_list = {'每次轮数':randNum,
             '是否启动随机时间':'N','延时范围起始':60,'结束':300,
             '是否开启随机api顺序':'Y',
@@ -75,7 +75,9 @@ def runapi(apilist,a):
             if req.get(api_list[apilist[a]],headers=headers).status_code == 200:
                 print('第'+str(apilist[a])+"号api调用成功")
                 if config_list['是否开启各api延时'] != 'N':
-                    time.sleep(random.randint(config_list['api延时范围开始'],config_list['api延时结束']))
+                    apiRandTime = random.randint(config_list['api延时范围开始'],config_list['api延时结束'])
+                    print('API延時'+apiRandTime+'秒')
+                    time.sleep(apiRandTime)
         except:
             print("pass")
             pass
@@ -106,7 +108,9 @@ final_list=fixed_api
 print('共'+str(config_list['每次轮数'])+'轮')    
 for c in range(1,config_list['每次轮数']+1):
     if config_list['是否启动随机时间'] == 'Y':
-        time.sleep(random.randint(config_list['延时范围起始'],config_list['结束']))		
+        randTime = random.randint(config_list['延时范围起始'],config_list['结束'])
+        print('随机延时'+randTime+'秒')
+        time.sleep(randTime)		
     for a in range(1, int(app_num)+1):
         if config_list['是否开启各账号延时'] == 'Y':
             time.sleep(random.randint(config_list['账号延时范围开始'],config_list['账号延时结束']))
@@ -115,11 +119,11 @@ for c in range(1,config_list['每次轮数']+1):
             client_secret=os.getenv('CLIENT_SECRET')
             print('\n'+'应用/账号 '+str(a)+' 的第'+str(c)+'轮'+time.asctime(time.localtime(time.time()))+'\n')
             if config_list['是否开启随机api顺序'] == 'Y':
-                print("已开启随机顺序,共12个api,自己数")
+                print("已开启随机顺序, 共12个api, 自己数")
                 apilist=final_list
                 runapi(apilist,a)
             else:
-                print("原版顺序,共10个api,自己数")
+                print("原版顺序, 共10个api, 自己数")
                 apilist=[5,9,8,1,20,24,23,6,21,22]
                 runapi(apilista,a)
         else:
@@ -127,10 +131,10 @@ for c in range(1,config_list['每次轮数']+1):
             client_secret=os.getenv('CLIENT_SECRET_'+str(a))
             print('\n'+'应用/账号 '+str(a)+' 的第'+str(c)+'轮'+time.asctime(time.localtime(time.time()))+'\n')
             if config_list['是否开启随机api顺序'] == 'Y':
-                print("已开启随机顺序,共12个api,自己数")
+                print("已开启随机顺序, 共12个api, 自己数")
                 apilist=final_list
                 runapi(apilist,a)
             else:
-                print("原版顺序,共10个api,自己数")
+                print("原版顺序, 共10个api, 自己数")
                 apilist=[5,9,8,1,20,24,23,6,21,22]
                 runapi(apilist,a)
