@@ -73,7 +73,7 @@ def runapi(apilist,a):
     for a in range(len(apilist)):	
         try:
             if req.get(api_list[apilist[a]],headers=headers).status_code == 200:
-                print('( '+str(a)+' )第'+str(apilist[a])+"号api调用成功( "+time.asctime(time.localtime(time.time()))+' )')
+                print('( '+str(a+1)+' )第'+str(apilist[a])+"号api调用成功( "+time.asctime(time.localtime(time.time()))+' )')
                 if config_list['是否开启各api延时'] != 'N':
                     api_rand_time=random.randint(config_list['api延时范围开始'],config_list['api延时结束'])
                     print('api延时'+str(api_rand_time)+' 秒')
@@ -100,9 +100,9 @@ fixed_api=[0,1,5,6,20,21]
 #保证抽取到outlook,onedrive的api
 ex_api=[2,3,4,7,8,9,10,22,23,24,25,26,27,13,14,15,16,17,18,19,11,12]
 #额外抽取填充的api
-fixed_api.extend(random.sample(ex_api,6))
-random.shuffle(fixed_api)
-final_list=fixed_api
+#fixed_api.extend(random.sample(ex_api,6))
+#random.shuffle(fixed_api)
+#final_list=fixed_api
 
 #实际运行
 print('共'+str(config_list['每次轮数'])+'轮')    
