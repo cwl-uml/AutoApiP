@@ -96,9 +96,9 @@ for a in range(1, int(app_num)+1):
         access_token_list[a-1]=getmstoken(ms_token)
 
 #随机api序列
-fixed_api=[0,1,5,6,20,21]
+fixed_api=[0,1,5,6,20,21,22]
 #保证抽取到outlook,onedrive的api
-ex_api=[2,3,4,7,8,9,10,22,23,24,25,26,27,13,14,15,16,17,18,19,11,12]
+ex_api=[0,1,5,6,20,21,2,3,4,7,8,9,10,22,23,24,25,26,27,13,14,15,16,17,18,19,11,12]
 #额外抽取填充的api
 #fixed_api.extend(random.sample(ex_api,6))
 #random.shuffle(fixed_api)
