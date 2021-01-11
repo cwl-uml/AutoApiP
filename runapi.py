@@ -73,7 +73,7 @@ def runapi(apilist,a):
     for a in range(len(apilist)):	
         try:
             if req.get(api_list[apilist[a]],headers=headers).status_code == 200:
-                print('第'+str(apilist[a])+"号api调用成功( "+time.asctime(time.localtime(time.time()))+' )')
+                print('( '+str(a)+' )第'+str(apilist[a])+"号api调用成功( "+time.asctime(time.localtime(time.time()))+' )')
                 if config_list['是否开启各api延时'] != 'N':
                     api_rand_time=random.randint(config_list['api延时范围开始'],config_list['api延时结束'])
                     print('api延时'+str(api_rand_time)+' 秒')
@@ -124,7 +124,7 @@ for c in range(1,config_list['每次轮数']+1):
                 fixed_api.extend(random.sample(ex_api,6))
                 random.shuffle(fixed_api)
                 apilist=fixed_api
-                print('執行順序 '+str(apilist))
+                print('執行順序 ( '+str(len(apilist))+' ) '+str(apilist))
                 runapi(apilist,a)
             else:
                 print("原版顺序, 共10个api, 自己数")
