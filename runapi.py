@@ -121,7 +121,10 @@ for c in range(1,config_list['每次轮数']+1):
             print('\n'+'应用/账号 '+str(a)+' 的第 '+str(c)+' 轮 '+time.asctime(time.localtime(time.time()))+'\n')
             if config_list['是否开启随机api顺序'] == 'Y':
                 print("已开启随机顺序, 共12个api, 自己数")
-                apilist=final_list
+                fixed_api.extend(random.sample(ex_api,6))
+                random.shuffle(fixed_api)
+                apilist=fixed_api
+                print('執行順序 '+str(apilist))
                 runapi(apilist,a)
             else:
                 print("原版顺序, 共10个api, 自己数")
@@ -133,7 +136,10 @@ for c in range(1,config_list['每次轮数']+1):
             print('\n'+'应用/账号 '+str(a)+' 的第 '+str(c)+' 轮 '+time.asctime(time.localtime(time.time()))+'\n')
             if config_list['是否开启随机api顺序'] == 'Y':
                 print("已开启随机顺序, 共12个api, 自己数")
-                apilist=final_list
+                fixed_api.extend(random.sample(ex_api,6))
+                random.shuffle(fixed_api)
+                apilist=fixed_api
+                print('執行順序 '+str(apilist))
                 runapi(apilist,a)
             else:
                 print("原版顺序, 共10个api, 自己数")
