@@ -10,7 +10,7 @@ access_token_list=['wangziyingwen']*int(app_num)
 #配置选项，自由选择
 randNum = random.randint(3,6)
 config_list = {'每次轮数':randNum,
-            '是否启动随机时间':'Y','延时范围起始':60,'结束':300,
+            '是否启动随机时间':'Y','延时范围起始':60,'结束':180,
             '是否开启随机api顺序':'Y',
             '是否开启各api延时':'Y','api延时范围开始':0,'api延时结束':5,
             '是否开启各账号延时':'N','账号延时范围开始':60,'账号延时结束':120,
@@ -127,6 +127,7 @@ for c in range(1,config_list['每次轮数']+1):
             client_secret=os.getenv('CLIENT_SECRET')
             print('\n'+'应用/账号 '+str(a)+' 的第 '+str(c)+' 轮 '+time.asctime(time.localtime(time.time()))+'\n')
             if config_list['是否开启随机api顺序'] == 'Y':
+                fixed_api=[0,1,5,6,20,21,22]
                 extra_api_num = random.randint(6,12)
                 fixed_api.extend(random.sample(ex_api,extra_api_num))
                 random.shuffle(fixed_api)
@@ -143,6 +144,7 @@ for c in range(1,config_list['每次轮数']+1):
             client_secret=os.getenv('CLIENT_SECRET_'+str(a))
             print('\n'+'应用/账号 '+str(a)+' 的第 '+str(c)+' 轮 '+time.asctime(time.localtime(time.time()))+'\n')
             if config_list['是否开启随机api顺序'] == 'Y':
+                fixed_api=[0,1,5,6,20,21,22]
                 extra_api_num = random.randint(6,12)
                 fixed_api.extend(random.sample(ex_api,6))
                 random.shuffle(fixed_api)
